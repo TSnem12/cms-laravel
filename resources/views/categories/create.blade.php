@@ -23,7 +23,7 @@
             @csrf
 
             @if(isset($category))
-                {{ @method('PUT') }}
+                @method('PUT') 
             @endif
                <div class="form-group">
                   
@@ -33,7 +33,7 @@
                </div>
 
                <div class="form-group">
-                <button class="btn btn-success">{{ isset($category) ? 'Update Category' : 'Add Category' }}</button>
+                <button class="btn btn-success"> {{ isset($category) ? 'Update Category' : 'Add Category' }} </button>
                </div> 
            </form> 
        </div> 
