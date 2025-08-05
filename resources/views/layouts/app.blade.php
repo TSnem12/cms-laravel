@@ -73,9 +73,17 @@
         </nav>
 
         <main class="py-4">
+        
           @Auth
           
             <div class="container">
+
+                @if(session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
+
                 <div class="row">
                     <div class="col-md-4">
                         <ul class="list-group">
@@ -83,7 +91,7 @@
                                 <a href="">Posts</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="">Categories</a>
+                                <a href="{{ route('categories.index') }}">Categories</a>
                             </li>
                         </ul>
                     </div>
@@ -103,5 +111,12 @@
 
         </main>
     </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"  crossorigin="anonymous"></script>
+    @yield('scripts')
+
 </body>
 </html>
