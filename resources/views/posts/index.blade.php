@@ -40,7 +40,14 @@
                         </td>
                         
                         <td>
-                            <a href="" class="btn btn-danger btn-sm">Trash</a>
+                            <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                                
+                                @csrf
+                                @method('DELETE')
+
+                                <button type="submit" class="btn btn-danger btn-sm">Trash</button>
+                            
+                            </form>
                         </td> 
 
                     </tr>    
