@@ -38,9 +38,11 @@
                         </td>
 
                         <td>
+                        
                             <a href="{{ route('categories.edit', $post->category->id) }}">
                                 {{ $post->category->name }}
                             </a>
+           
                         </td>
                         
                         @if($post->trashed())
