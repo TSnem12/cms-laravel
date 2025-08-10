@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,3 +25,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('categories', 'CategoriesController');
+
+Route::resource('posts', 'PostsController');
+
+Route::get('trashed-posts', 'PostsController@trashed')->name('trashed-posts.index');
+
+Route::put('restore-post/{post}', 'PostsController@restore')->name('restore-posts');

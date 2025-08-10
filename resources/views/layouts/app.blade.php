@@ -9,8 +9,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,6 +16,18 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+
+        .btn-info {
+            color: #fff;
+        }
+
+    </style>
+
+    @yield('css')
+
+
 </head>
 <body>
     <div id="app">
@@ -88,12 +98,23 @@
                     <div class="col-md-4">
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <a href="">Posts</a>
+                                <a href="{{ route('posts.index') }}">Posts</a>
                             </li>
+
                             <li class="list-group-item">
                                 <a href="{{ route('categories.index') }}">Categories</a>
                             </li>
+
                         </ul>
+
+                        <ul class="list-group mt-5">
+                           
+                            <li class="list-group-item">
+                                <a href="{{ route('trashed-posts.index') }}">Trashed Posts</a>
+                            </li>
+   
+                        </ul>
+
                     </div>
 
                     <div class="col-md-8">
@@ -113,10 +134,10 @@
     </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"  crossorigin="anonymous"></script>
-    @yield('scripts')
+
+   <!-- Scripts -->
+   <script src="{{ asset('js/app.js') }}"></script> 
+   @yield('scripts')
 
 </body>
 </html>
