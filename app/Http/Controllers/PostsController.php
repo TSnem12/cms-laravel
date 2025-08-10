@@ -8,9 +8,21 @@ use Illuminate\Http\Request;
 
 use App\Post;
 use App\Category;
+use App\Http\Middleware\VerifyCategoriesCount;
 
 class PostsController extends Controller
 {
+    
+    
+    public function __construct()
+    {
+        $this->middleware('verifyCategoriesCount')->only(['create', 'store']);
+    }
+    
+    
+    
+    
+    
     /**
      * Display a listing of the resource.
      *
