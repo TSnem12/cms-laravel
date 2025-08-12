@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSoftDeletesToPostsTable extends Migration
+class CreatePostTagTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class AddSoftDeletesToPostsTable extends Migration
      */
     public function up()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            if (!Schema::hasColumn('posts', 'deleted_at')) {
-                $table->softDeletes();
-            }
+        Schema::create('post_tag', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->integer('post_id');
+            $table->integer('tag_id');
+            $table->timestamps();
         });
     }
 
@@ -27,8 +28,6 @@ class AddSoftDeletesToPostsTable extends Migration
      */
     public function down()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn('deleted_at');
-        });
+        Schema::dropIfExists('post_tag');
     }
 }
