@@ -81,13 +81,40 @@
                           @endif  
                          >
                             {{ $category->name }}
+                         
                          </option>
                          
                         @endforeach
 
                     </select>
-            
             </div>
+            
+            @if($tags->count() > 0)
+                <div class="form-group">
+
+                    <label for="tag">Tags</label>
+                
+                    <select name="tags[]" id="tags" class="form-control tags-selector" multiple>
+                            
+                        @foreach ($tags as $tag)
+                            <option value="{{ $tag->id }}"
+                               @if(isset($post)) 
+                                    @if($post->hasTag($tag->id))
+                                        selected
+                                    @endif    
+                               @endif 
+                            >
+
+                                {{ $tag->name }}
+
+                            </option>
+                        @endforeach
+                    
+                    </select>
+                
+                </div>
+            @endif
+
 
             <div class="form-group">
 
@@ -106,10 +133,19 @@
 
     <script src="https://cdn.jsdelivr.net/npm/trix@2.1.15/dist/trix.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     <script>
         flatpickr('#published_at', {
             enableTime: true
         })
+
+        $(document).ready(function() {
+            $('.tags-selector').select2();
+        });
+
+
+
     </script>
 
 @endsection
@@ -119,7 +155,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/trix@1.0.0/dist/trix.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"/>
 @endsection
 
 
