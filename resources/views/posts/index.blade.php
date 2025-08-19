@@ -30,7 +30,7 @@
                     <tr>
 
                         <td>
-                            <img src="{{ asset($post->image) }}" alt="" width="60px" height="60px">
+                            <img src="{{ asset('storage/'. $post->image) }}" alt="" width="60px" height="60px">
                         </td>
 
                         <td>
