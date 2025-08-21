@@ -42,6 +42,17 @@ class post extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function scopeSearched($query)
+    {
+        $search = request()->query('search');
+
+        if(!$search) {
+            return $query;
+        } else {
+            return $query->where('title', 'LIKE', "%{$search}%");
+        }
+        
+    }
 
 
 }
